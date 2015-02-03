@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <bundleapi_selection translate="title" module="dse_bundleapi">
+                <title>Bundle Product API</title>
+                <model>bundleapi/selection_api</model>
+                <acl>bundleapi/selection</acl>
+                <methods>
+                    <create translate="title" module="dse_bundleapi">
+                        <title>Create bundle selections</title>
+						<acl>bundleapi/selection/create</acl>
+                    </create>
+                </methods>
+            </bundleapi_selection>
+        </resources>
+        <resources_alias>
+            <selection>bundleapi_selection</selection>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <selection>bundleapiSelection</selection>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <bundleapi>
+                    <title>Bundle</title>
+                    <selection>
+                        <title>Link</title>
+                        <create translate="title" module="dse_bundleapi">
+                            <title>Create Bundle Selections</title>
+                        </create>
+                    </selection>
+                </bundleapi>
+            </resources>
+        </acl>
+    </api>
+</config>

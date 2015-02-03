@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Dse_Bundleapi>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dse_Bundleapi>
+    </modules>
+</config>

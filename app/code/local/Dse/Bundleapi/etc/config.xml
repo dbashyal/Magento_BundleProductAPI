@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Dse_Bundleapi>
+            <version>0.0.1</version>
+        </Dse_Bundleapi>
+    </modules>
+    <global>
+        <models>
+            <bundleapi>
+                <class>Dse_Bundleapi_Model</class>
+            </bundleapi>
+        </models>
+        <helpers>
+            <bundleapi>
+                <class>Dse_Bundleapi_Helper</class>
+            </bundleapi>
+        </helpers>
+    </global>
+</config>
