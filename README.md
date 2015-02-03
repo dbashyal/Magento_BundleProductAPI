@@ -1,6 +1,6 @@
 # Magento Bundle Product API
 
-@see: createBundleProduct.php
+@see: [createBundleProduct.php] (createBundleProduct.php)
 
 // works fine this way
 
