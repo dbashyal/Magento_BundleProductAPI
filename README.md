@@ -3,10 +3,10 @@
 @see: createBundleProduct.php
 
 // works fine this way
-$result = $client->call($session, 'bundleapi_selection.create', array($items, $selectionRawData, $product, 0));
+`$result = $client->call($session, 'bundleapi_selection.create', array($items, $selectionRawData, $product, 0));`
 
 // doesn't work for some reason.
-$result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $product, 0);
+`$result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $product, 0);`
 
 h3.Issues
 
