@@ -10,7 +10,7 @@
 
 ```$result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $product, 0);```
 
-h3.Issues
+###Issues
 
 What am I doing wrong in V2?
 
