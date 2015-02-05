@@ -1,8 +1,13 @@
 <?php
 class Dse_Bundleapi_Model_Selection_Api extends Mage_Catalog_Model_Api_Resource
 {
-    public function create($items, $selectionRawData, $productData, $storeid = null)
+    /**/
+    public function create($items = array(), $selectionRawData = array(), $productId = 0, $storeid = null)
     {
+        // convert stdClass Object to Array.
+        $items = json_decode(json_encode($items), true);
+        $selectionRawData = json_decode(json_encode($selectionRawData), true);
+
         $selections = array();
 
         //check if product id in selection data is valid
@@ -16,7 +21,7 @@ class Dse_Bundleapi_Model_Selection_Api extends Mage_Catalog_Model_Api_Resource
         $selections[] = $selectionRawData;
 
         $product   = Mage::getModel('catalog/product')->setStoreId($storeid);
-        $product->load($productData['id']);
+        $product->load($productId);
 
         if (!$product->getId()) {
             //bail
