@@ -8,15 +8,55 @@
 
     <types>
         <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
-            <complexType name="bundleapiSelectionEntity">
+            <complexType name="bundleapiSelectionProductDataEntity">
                 <all>
-                    <element name="selectionRawData" type="xsd:string" minOccurs="0"/>
+                    <element name="id" type="xsd:int" minOccurs="0"/>
+                    <element name="name" type="xsd:string" minOccurs="0"/>
+                    <element name="sku_type" type="xsd:int" minOccurs="0"/>
+                    <element name="price_type" type="xsd:int" minOccurs="0"/>
+                    <element name="shipment_type" type="xsd:int" minOccurs="0"/>
+                    <element name="status" type="xsd:string" minOccurs="0"/>
+                    <element name="tax_class_id" type="xsd:int" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="bundleapiSelectionProductDataEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:bundleapiSelectionProductDataEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+
+            <complexType name="bundleapiSelectionOptionEntity">
+                <all>
                     <element name="title" type="xsd:string" minOccurs="0"/>
                     <element name="option_id" type="xsd:string" minOccurs="0"/>
                     <element name="delete" type="xsd:string" minOccurs="0"/>
                     <element name="type" type="xsd:string" minOccurs="0"/>
                     <element name="required" type="xsd:int" minOccurs="0"/>
                     <element name="position" type="xsd:int" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="bundleapiSelectionOptionEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:bundleapiSelectionOptionEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+
+            <complexType name="bundleapiSelectionEntity">
+                <all>
+                    <element name="selection_id" type="xsd:string" minOccurs="0"/>
+                    <element name="option_id" type="xsd:string" minOccurs="0"/>
+                    <element name="product_id" type="xsd:string" minOccurs="0"/>
+                    <element name="delete" type="xsd:string" minOccurs="0"/>
+                    <element name="selection_price_value" type="xsd:string" minOccurs="0"/>
+                    <element name="selection_price_type" type="xsd:int" minOccurs="0"/>
+                    <element name="selection_qty" type="xsd:int" minOccurs="0"/>
+                    <element name="selection_can_change_qty" type="xsd:int" minOccurs="0"/>
+                    <element name="position" type="xsd:int" minOccurs="0"/>
+                    <element name="is_default" type="xsd:int" minOccurs="0"/>
                 </all>
             </complexType>
             <complexType name="bundleapiSelectionEntityArray">
@@ -36,8 +76,8 @@
 
     <message name="bundleapiSelectionCreateRequest">
         <part name="sessionId" type="xsd:string" />
-        <part name="items" type="typens:bundleapiSelectionEntity" />
-        <part name="selectionRawData" type="typens:bundleapiSelectionEntity" />
+        <part name="items" type="typens:bundleapiSelectionOptionEntityArray" />
+        <part name="selectionRawData" type="typens:bundleapiSelectionEntityArray" />
         <part name="productId" type="xsd:int" />
         <part name="storeid" type="xsd:string" />
     </message>
@@ -78,5 +118,9 @@
     </binding>
 
     <!--END BINDINGS -->
-
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
 </definitions>
