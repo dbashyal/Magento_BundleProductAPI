@@ -34,14 +34,8 @@ try{
         // product doesn't exist
     }
 
-    $product = array(
-        'sku_type' => 1,
+    $productData = array(
         'price' => '100',
-        'price_type' => 1,
-        'shipment_type' => 1,
-        'bundle_options' => array(
-            array('title' => 'Bundle Contains', 'type' => 'checkbox', 'required' => 1, 'position' => 0)
-        ),
         'categories' => array(3807, 3989, 12195, 16900),
         'websites' => array(1,2,3),
         'name' => 'Product name',
@@ -59,8 +53,7 @@ try{
     );
 
     // create again
-    $productId = $client2->catalogProductCreate($session, 'bundle', $attributeSet->set_id, 'product_sku', $product);
-    $product['id'] = $productId;
+    $productId = $client2->catalogProductCreate($session, 'bundle', $attributeSet->set_id, 'product_sku', $productData);
 
     if(is_int($productId)){
         $items[] = array(
@@ -78,12 +71,12 @@ try{
         $selectionRawData[] = array('selection_id' => '','option_id' => '','product_id' => '16275','delete' => '','selection_price_value' => '0','selection_price_type' => 0,'selection_qty' => 1,'selection_can_change_qty' => 0,'position' => 0,'is_default' => 1);
         $selectionRawData[] = array('selection_id' => '','option_id' => '','product_id' => '16700','delete' => '','selection_price_value' => '0','selection_price_type' => 0,'selection_qty' => 1,'selection_can_change_qty' => 0,'position' => 0,'is_default' => 1);
 
-		// works fine this way
-        $result = $client->call($session, 'bundleapi_selection.create', array($items, $selectionRawData, $product, 0));
-        var_dump($result);
+        // API version 1 method
+        // $result = $client->call($session, 'bundleapi_selection.create', array($items, $selectionRawData, $productId, 0));
+        // var_dump($result);
 
-		// doesn't work for some reason.
-        $result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $product, 0);
+        // API version 2 method
+        $result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $productId, 0);
         var_dump($result);
     }
 } catch (Exception $e){
