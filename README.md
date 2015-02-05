@@ -1,14 +1,16 @@
 # Magento Bundle Product API
 
-@see: createBundleProduct.php
+@see: [createBundleProduct.php] (createBundleProduct.php)
 
 // works fine this way
-$result = $client->call($session, 'bundleapi_selection.create', array($items, $selectionRawData, $product, 0));
+
+```$result = $client->call($session, 'bundleapi_selection.create', array($items, $selectionRawData, $product, 0));```
 
 // doesn't work for some reason.
-$result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $product, 0);
 
-h3.Issues
+```$result = $client2->bundleapiSelectionCreate($session, $items, $selectionRawData, $product, 0);```
+
+###Issues
 
 What am I doing wrong in V2?
 
